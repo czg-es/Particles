@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Particles</title>
+</head>
+<body>
+    <div class='container' id='container'>
+        <canvas id="canvas1"></canvas>
+    </div>
+    <div class ="controls" >
+        
+        <span>
+            <input type="range" value="1" min="1" max="20" id='DirX_vel' oninput="update_veloX(this.value,this.nextElementSibling.id);">
+            Resistencia X</input>
+            <input type="text" id="DirX_vel_display" value="1" size="2" disabled >
+        </span>
+        <span>
+            <input type="range" value="1" min="1" max="20" id='DirY_vel' oninput="update_veloY(this.value,this.nextElementSibling.id);">
+            resistencia Y</input>
+            <input type="text" id="DirY_vel_display" value="1" size="2" disabled >
+        </span>
+        <span>
+            <input type="range" value="0" min="0" max="16777215" id='minColor' oninput="update_minColor(this.value,this.nextElementSibling.id);">
+            Min Color</input>
+            <input type="text"  class="min_color"id="minColor_display" value="0" size="5" disabled >
+        </span>
+        <!-- <span class="min_color">Min color</span>-->
+        <span> 
+            <input type="range" value="16777214" min="0" max="16777215" id='maxColor' oninput="update_maxColor(this.value,this.nextElementSibling.id);">
+            Max Color</input>
+            <input type="text" id="maxColor_display" value="16777215" size="5" disabled >
+        </span>
+        <!-- <span class="max_color">Max color</span> -->
+        <span> 
+            <input type="range" value="16777214" min="0" max="16777215" id='maxColor' oninput="update_color(this.value,this.nextElementSibling.id);">
+            Only Color</input>
+            <input type="text" id="color_display" value="16777215" size="5" disabled >
+        </span>
+        <!-- <span class="max_color">Max color</span> -->
+
+        <span>
+            <button id="btn1" onclick="pop();">Aplicar Color</button>
+        </span>
+    </div>
+    
+    <script src="main.js"></script>
+</body>
+</html>
