@@ -20,30 +20,44 @@
         </span>
         <span>
             <input type="range" value="1" min="1" max="20" id='DirY_vel' oninput="update_veloY(this.value,this.nextElementSibling.id);">
-            resistencia Y</input>
+            Resistencia Y</input>
             <input type="text" id="DirY_vel_display" value="1" size="2" disabled >
         </span>
+        <hr>
         <span>
             <input type="range" value="0" min="0" max="16777215" id='minColor' oninput="update_minColor(this.value,this.nextElementSibling.id);">
             Min Color</input>
-            <input type="text"  class="min_color"id="minColor_display" value="0" size="5" disabled >
+            <input type="text"  class="min_color" id="minColor_display" value="0" size="5" disabled >
         </span>
-        <!-- <span class="min_color">Min color</span>-->
         <span> 
             <input type="range" value="16777214" min="0" max="16777215" id='maxColor' oninput="update_maxColor(this.value,this.nextElementSibling.id);">
             Max Color</input>
-            <input type="text" id="maxColor_display" value="16777215" size="5" disabled >
+            <input type="text" class="max_color" id="maxColor_display" value="16777215" size="5" disabled >
         </span>
-        <!-- <span class="max_color">Max color</span> -->
+        <hr>
         <span> 
-            <input type="range" value="16777214" min="0" max="16777215" id='maxColor' oninput="update_color(this.value,this.nextElementSibling.id);">
-            Only Color</input>
-            <input type="text" id="color_display" value="16777215" size="5" disabled >
+            <input type="range" value="16777214" min="0" max="16777215" id='Color' oninput="update_color(this.value,this.nextElementSibling.id);">
+            </input>
+            <input type="text" class="one_color right" id="oneColor_display" value="16777215" size="5" disabled >
         </span>
-        <!-- <span class="max_color">Max color</span> -->
-
         <span>
+            <input type="color" value="16777214" min="0" max="16777215" id='Colorpick' oninput="update_colorPick(this.value,this.nextElementSibling.id);">
+            1 Color</input>
+            <input type="text" class="one_colorPick" id="oneColorpick_display" value="16777215" size="5" disabled >
+        </span>
+        <hr>
+        <span>
+            <input id="gradient1" type="color" oninput="update_gradient1(this.value);" value="#ffe6e6">fondo 1 fondo 2</input>
+            <input id="gradient2" type="color"  oninput="update_gradient2(this.value);" value="#996666"></input>
+        </span>
+        <span >
+            <input id="lines" type="color" oninput="update_lines(this.value);" >Conexiones</input>
+        </span>
+
+        <span >
+            <div class="btn1">
             <button id="btn1" onclick="pop();">Aplicar Color</button>
+            </div>
         </span>
     </div>
     

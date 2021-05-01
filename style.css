@@ -1,6 +1,11 @@
 :root {
     --min-color: #000000;
     --max-color: 0;
+    --one-color: #000000;
+    --one-colorPick:0;
+    --gradient1:#ffe6e6;      
+    --gradient2: #996666;
+
   }
 *{
     margin: 0;
@@ -8,7 +13,7 @@
     box-sizing: border-box;
 }
 body{
-    background: radial-gradient(#ffe6e6,#996666);
+    background: radial-gradient(var(--gradient1),var(--gradient2));
 }
 /* .container{
     width:100vw;
@@ -20,9 +25,10 @@ body{
     left: 0;
     width:100%;
     height: 100%;
-    background: radial-gradient(#ffe6e6,#996666);
+    background: radial-gradient(var(--gradient1),var(--gradient2));
 }
 .controls{
+    width: auto;
     padding: 0.5em;
     display: flex;
     flex-flow: column;
@@ -33,7 +39,50 @@ body{
     z-index: 99;
     border-bottom-right-radius: 30px;
 }
+
+.controls > span{
+    width: 100%;
+    align-self: flex-start;
+    display: flex;
+    flex-flow:row;
+    justify-content: space-between;
+    
+    
+    
+}
+
+.controls > span :nth-child(2){
+    align-self: flex-end;
+    
+    /* background: chartreuse; */
+    
+    
+
+}
+
+.btn1{
+    width: 100%;
+    padding: 0.2em;
+    display: flex;
+    flex-flow: row;
+    justify-content:center;
+    
+    
+}
+
 .min_color{
     background: var(--min-color);
+    
+}
+.max_color{
+    background: var(--max-color);
+    
+}
+.one_color{
+    background: var(--one-color);
+    
+}
+.one_colorPick{
+    background: var(--one-colorPick);
     
 }

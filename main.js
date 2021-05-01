@@ -9,6 +9,7 @@ let veloY =1;
 let maxColor= 16777214;
 let minColor= 0;
 let rango;
+let rgbc = "140, 85, 31,";
 
 // Get mouse position
 let mouse = {
@@ -95,8 +96,8 @@ function init(hiColor,lowColor){
         let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size *2 );
         let directionX = (Math.random() * 5) - 2.5;
         let directionY = (Math.random() * 5) - 2.5;
-        let color = '#' + (Math.floor((Math.random()*rango) + minColor).toString(16));
-        console.log("----->" + color);
+        let color = '#' + (Math.floor((Math.random()*rango) + minColor).toString(16)).padStart(6, '0');
+        //console.log("----->" + color);
 
         particlesArray.push(new Particle (x, y, directionX, directionY, size, color));
     }
@@ -126,16 +127,18 @@ function getRandomRgb() {
 function connect(){
     
     let opacityValue = 1;
+    //let lineColor = 'rgba(140, 85, 31,'+ opacityValue + ')';
+    
     for(let a = 0; a < particlesArray.length; a++){
         for(let b = a; b < particlesArray.length; b++){
             let distance = (( particlesArray[a].x -particlesArray[b].x) * ( particlesArray[a].x -particlesArray[b].x))
                            +(( particlesArray[a].y -particlesArray[b].y) * ( particlesArray[a].y -particlesArray[b].y));
             if(distance < (canvas.width / 10) * (canvas.height / 10)){
                 opacityValue = 1 - (distance/20000 * 2 );
-                //values.push(opacityValue);
-                ctx.strokeStyle = 'rgba(140, 85, 31,'+ opacityValue + ')';
-                //ctx.strokeStyle = getRandomRgb() + opacityValue + ')';
-                //ctx.strokeStyle = 'rgba('+a*3+','+b*5+','+ a*20 +','+ opacityValue + ')';
+                let lineColor = 'rgba('+rgbc + opacityValue + ')';
+               
+                ctx.strokeStyle = lineColor;
+                
                 ctx.lineWidth = 1;
                 ctx.beginPath();
                 ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -179,26 +182,60 @@ function update_veloY(value,label){
 
 function update_minColor(value,label){
     minColor = value;
-    let hexc = '#'+ (Math.floor(minColor).toString(16));
+    let hexc = '#'+ (Math.floor(minColor).toString(16)).padStart(6, '0');
+    
     document.getElementById(label).value=value;
     document.documentElement.style.setProperty('--min-color',hexc );
-    console.log(hexc,value,minColor);
+    //console.log(hexc,value,minColor);
     
 }
 function update_maxColor(value,label){
     maxColor = value;
+    let hexc = '#'+ (Math.floor(maxColor).toString(16)).padStart(6, '0');
+    document.documentElement.style.setProperty('--max-color',hexc );
     document.getElementById(label).value=value;
     
 }
 function update_color(value,label){
     maxColor = value;
     minColor = value;
+    let hexc = '#'+ (Math.floor(value).toString(16)).padStart(6, '0');
     init(maxColor,minColor);
     document.getElementById(label).value=value;
     document.getElementById("minColor").value=value;
     document.getElementById("maxColor").value=value;
+    document.documentElement.style.setProperty('--one-color',hexc );
     
 }
+
+function update_colorPick(value,label){
+    let intcolor = parseInt(value.substring(1),16);
+    //console.log("-------->>>>>" + value + "--->>>" + intcolor);
+    document.getElementById(label).value=value;
+    document.getElementById("Color").value=intcolor;
+    document.documentElement.style.setProperty('--one-colorPick',value );
+    update_color(intcolor,"oneColor_display");
+}
+
+
+function update_gradient1(value){
+    document.documentElement.style.setProperty('--gradient1',value );
+}
+function update_gradient2(value){
+    document.documentElement.style.setProperty('--gradient2',value );
+}
+
+
+function update_lines(value){
+    let rgb = value.substring(1);
+    let parts = rgb.match(/.{1,2}/g);
+    let rgbcolor = "";
+    parts.forEach(element => rgbcolor += (parseInt(element,16) +",") );
+    rgbc =rgbcolor;
+    
+}
+
+
 
 function pop(){
     init(maxColor,minColor);
