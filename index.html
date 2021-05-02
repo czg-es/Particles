@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,12 +8,13 @@
     <title>Particles</title>
 </head>
 <body>
+    <div id="settings1"><button id="toggle" onclick="hide('controls');">⚙️Controles</button></div>
     <div class='container' id='container'>
         <canvas id="canvas1"></canvas>
     </div>
-    <div class ="controls" >
-        
-        <span>
+    <div class ="controls" id="controls" >
+        <br><hr>
+        <span >
             <input type="range" value="1" min="1" max="20" id='DirX_vel' oninput="update_veloX(this.value,this.nextElementSibling.id);">
             Resistencia X</input>
             <input type="text" id="DirX_vel_display" value="1" size="2" disabled >
@@ -55,12 +56,25 @@
         </span>
 
         <span >
+            
             <div class="btn1">
             <button id="btn1" onclick="pop();">Aplicar Color</button>
             </div>
         </span>
     </div>
-    
+    <script>
+        function hide(e){
+            
+            let x = document.getElementById(e);
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                  }
+            }
+
+        
+    </script>
     <script src="main.js"></script>
 </body>
 </html>

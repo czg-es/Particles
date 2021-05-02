@@ -15,10 +15,7 @@
 body{
     background: radial-gradient(var(--gradient1),var(--gradient2));
 }
-/* .container{
-    width:100vw;
-    height: 100vh;
-} */
+
 #canvas1{
     position: absolute;
     top: 0;
@@ -36,28 +33,18 @@ body{
     top: 0;
     left: 0;
     background: #ffffff90;
-    z-index: 99;
+    z-index: 3;
     border-bottom-right-radius: 30px;
 }
-
 .controls > span{
     width: 100%;
     align-self: flex-start;
     display: flex;
     flex-flow:row;
     justify-content: space-between;
-    
-    
-    
 }
-
 .controls > span :nth-child(2){
     align-self: flex-end;
-    
-    /* background: chartreuse; */
-    
-    
-
 }
 
 .btn1{
@@ -66,23 +53,24 @@ body{
     display: flex;
     flex-flow: row;
     justify-content:center;
-    
-    
 }
 
 .min_color{
     background: var(--min-color);
-    
 }
 .max_color{
     background: var(--max-color);
-    
 }
 .one_color{
     background: var(--one-color);
-    
 }
 .one_colorPick{
     background: var(--one-colorPick);
-    
+}
+
+#settings1{
+    z-index: 4;
+    position: absolute;
+    top:3px ;
+    left: 3px;
 }

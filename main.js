@@ -4,6 +4,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let particlesArray;
+
 let veloX =1;
 let veloY =1;
 let maxColor= 16777214;
@@ -21,8 +22,6 @@ let mouse = {
 window.addEventListener('pointermove' , function(event){
     mouse.x = event.x;
     mouse.y = event.y;
-/*    console.log(mouse.x + '<--X');
-    console.log(mouse.y + '<--Y');*/
     } 
 );
 // Create particle
@@ -86,8 +85,7 @@ function init(hiColor,lowColor){
     let maxColor= hiColor;
     let minColor= lowColor;
     let rango = maxColor - minColor;
-    //console.log(rango);
-
+    
     particlesArray = [];
     let numberOfParticles = (canvas.height * canvas.width  ) /9000;
     for(let i = 0; i <numberOfParticles; i++){
@@ -97,7 +95,7 @@ function init(hiColor,lowColor){
         let directionX = (Math.random() * 5) - 2.5;
         let directionY = (Math.random() * 5) - 2.5;
         let color = '#' + (Math.floor((Math.random()*rango) + minColor).toString(16)).padStart(6, '0');
-        //console.log("----->" + color);
+        
 
         particlesArray.push(new Particle (x, y, directionX, directionY, size, color));
     }
@@ -113,15 +111,15 @@ function animate(){
     }
     connect();
 }
-
-//let values = [];
+/*
+//unused
 function getRandomRgb() {
     var num = Math.round(0xffffff * Math.random());
     var r = num >> 16;
     var g = num >> 8 & 255;
     var b = num & 255;
     return 'rgba(' + r + ', ' + g + ', ' + b + ',';
-}
+}*/
 
 // Check if particles are close to draw a line
 function connect(){
@@ -183,11 +181,8 @@ function update_veloY(value,label){
 function update_minColor(value,label){
     minColor = value;
     let hexc = '#'+ (Math.floor(minColor).toString(16)).padStart(6, '0');
-    
     document.getElementById(label).value=value;
     document.documentElement.style.setProperty('--min-color',hexc );
-    //console.log(hexc,value,minColor);
-    
 }
 function update_maxColor(value,label){
     maxColor = value;
@@ -217,7 +212,6 @@ function update_colorPick(value,label){
     update_color(intcolor,"oneColor_display");
 }
 
-
 function update_gradient1(value){
     document.documentElement.style.setProperty('--gradient1',value );
 }
@@ -225,22 +219,17 @@ function update_gradient2(value){
     document.documentElement.style.setProperty('--gradient2',value );
 }
 
-
 function update_lines(value){
     let rgb = value.substring(1);
     let parts = rgb.match(/.{1,2}/g);
     let rgbcolor = "";
     parts.forEach(element => rgbcolor += (parseInt(element,16) +",") );
     rgbc =rgbcolor;
-    
 }
-
-
-
 function pop(){
     init(maxColor,minColor);
 }
-
+//initialize on load
 init(16777216,0);
 animate();
 
